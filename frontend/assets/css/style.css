@@ -125,17 +125,12 @@ img {
 }
 
 .main-nav ul li.login-button a {
-    background-color: #3b82f6;
     padding: 0.5rem 1.5rem;
-    border-radius: 0.25rem;
-    color: white;
     margin: 0.5rem 0;
-    border: none;
 }
 
 .main-nav ul li.login-button a:hover {
-    background-color: #2563eb;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 
 /* Carousel */
@@ -361,6 +356,12 @@ img {
     gap: 1rem;
     margin-left: auto; 
     margin-right: 2rem;
+    color: #3b82f6;
+}
+
+.course-actions:hover {
+    color: #2563eb;
+    font-weight: bold;
 }
 
 .course-description {
@@ -370,6 +371,45 @@ img {
     margin-top: 1rem;
     font-size: 0.9rem;
     color: #4b5563;
+}
+
+/* Inside the Course Page */
+.material-container{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    background-color: #ffffff;
+}
+
+.material-page-layout {
+    display: flex;
+    gap: 2rem;
+    margin-left: 2rem;
+}
+
+.material-info {
+    display: static;
+    margin-top: 1.5rem;
+}
+
+.material-info h2 {
+    font-size: 2rem;
+    font-weight: Bold;
+    color: black;
+    margin-bottom: 1rem;
+}
+
+.material-info p {
+    text-align: justify;
+    line-height: 1.5;
+    color: #4b5563;
+    margin-bottom: 2rem;
+
+}
+
+.material-info img {
+    margin-bottom: 2rem;
+
 }
 
 /* Contact Page */
@@ -518,23 +558,17 @@ img {
     margin-left: 2rem;
 }
 
-.about-details-column {
-    flex: 1; 
-    min-width: 300px;
-}
-
-.about-details-column h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1f2937;
-    margin-bottom: 1.5rem;
-}
-
 .about-info {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     color: #4b5563;
+}
+
+.about-info h3 {
+    font-size: 1.5rem;
+    font-weight: Bold;
+    color: #1f2937;
 }
 
 .about-info p {
