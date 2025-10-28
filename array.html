@@ -1,0 +1,87 @@
+<html>
+<head>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Virtual Lab</title>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <img src="assets/images/itblogo.jpg" alt="Logo ITB">
+                    </div>
+                    <div class="logo-text">
+                        <h1>Virtual Laboratory</h1>
+                        <p class="subtitle">Python Programming</p>
+                        <p class="sub-subtitle">Institut Teknologi Bandung</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="sticky-header-wrapper">
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="nav-active"><a href="course.html">Course</a></li>
+                    <li><a href="simulation.html">Simulation</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li class="login-button"><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <main class="main-content">
+        <div class="material-container">
+            <div class="material-page-layout">
+                <div class="material-info">
+                    <h2>Array in Python</h2>
+                    <p>
+                       Lists in Python are the most flexible and commonly used data structure for sequential storage. They are similar to arrays in other languages but with several key differences:
+                    </p>
+                    <p>
+                        <b>Dynamic Typing:</b> Python lists can hold elements of different types in the same list. We can have an integer, a string and even other lists all stored within a single list.<br>
+                        <b>Dynamic Resizing:</b> Lists are dynamically resized, meaning you can add or remove elements without declaring the size of the list upfront.<br>
+                        <b>Built-in Methods:</b> Python lists come with numerous built-in methods that allow for easy manipulation of the elements within them, including methods for appending, removing, sorting and reversing elements.
+                    </p>
+                    <h2>Python Arrays</h2>
+                    <p>
+                        In Python, array is a collection of items stored at contiguous memory locations. The idea is to store multiple items of the same type together. Unlike Python lists (can store elements of mixed types), arrays must have all elements of same type. Having only homogeneous elements makes it memory-efficient.
+                    </p>
+                    <img src="assets/images/array1.png">
+                    <h3>Create an Array in Python</h3>
+                    <p>
+                        Array in Python can be created by importing an array module. array( data_type , value_list ) is used to create array in Python with data type and value list specified in its arguments.
+                    </p>
+                    <img src="assets/images/array2.png">
+                    <h3>Adding Elements to an Array</h3>
+                    <p>
+                        Elements can be added to the Python Array by using built-in insert() function. Insert is used to insert one or more data elements into an array. Based on the requirement, a new element can be added at the beginning, end, or any given index of array. append() is also used to add the value mentioned in its arguments at the end of the Python array.
+                    </p>
+                    <img src="assets/images/array3.png">
+                    <h3>Accessing Array Items</h3>
+                    <p>
+                        In order to access the array items refer to the index number. Use the index operator [ ] to access an item in a array in Python. The index must be an integer.
+                    </p>
+                    <img src="assets/images/array4.png">
+                    <h3>Removing Elements from the Array</h3>
+                    <p>
+                        Elements can be removed from the Python array by using built-in remove() function. It will raise an Error if element doesn’t exist. Remove() method only removes the first occurrence of the searched element. To remove range of elements, we can use an iterator.<br>
+                        pop() function can also be used to remove and return an element from the array. By default it removes only the last element of the array. To remove element from a specific position, index of that item is passed as an argument to pop() method.
+                    </p>
+                    <img src="assets/images/array5.png">
+                    <p align="right">Source: Geeksforgeeks</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Virtual Lab. Made by BT & Rafli</p>
+            <p>Project for Web Application and App Development Assignment</p>
+        </div>
+    </footer>
+</body>
+</html>
+

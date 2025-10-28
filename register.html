@@ -1,0 +1,127 @@
+<html>
+<head>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Register - Virtual Lab</title>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <img src="assets/images/itblogo.jpg" alt="Logo ITB">
+                    </div>
+                    <div class="logo-text">
+                        <h1>Virtual Laboratory</h1>
+                        <p class="subtitle">Python Programming</p>
+                        <p class="sub-subtitle">Institut Teknologi Bandung</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="sticky-header-wrapper">
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="course.html">Course</a></li>
+                    <li><a href="simulation.html">Simulation</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li class="login-button"><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-box">
+                    <h2>Register</h2>
+                    <form class="auth-form" id="registerForm">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required minlength="3">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required minlength="8">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password" required minlength="8">
+                        </div>
+                        <button type="submit" class="auth-button">Register</button>
+                        <div id="message" class="auth-message"></div>
+                    </form>
+                    <script>
+                        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+                            e.preventDefault();
+                            
+                            const username = document.getElementById('username').value;
+                            const email = document.getElementById('email').value;
+                            const password = document.getElementById('password').value;
+                            const confirmPassword = document.getElementById('confirm-password').value;
+                            const messageDiv = document.getElementById('message');
+                            
+                            if (password !== confirmPassword) {
+                                messageDiv.textContent = 'Passwords do not match!';
+                                messageDiv.style.color = 'red';
+                                return;
+                            }
+                            
+                            try {
+                                const formData = new URLSearchParams();
+                                formData.append('username', username);
+                                formData.append('email', email);
+                                formData.append('password', password);
+                                
+                                const response = await fetch('/api/register', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded',
+                                    },
+                                    body: formData
+                                });
+                                
+                                const data = await response.json();
+                                
+                                if (response.ok) {
+                                    messageDiv.textContent = data.message;
+                                    messageDiv.style.color = 'green';
+                                    // No need to redirect to login since user is already logged in
+                                    setTimeout(() => {
+                                        window.location.href = '/home';
+                                    }, 2000);
+                                } else {
+                                    messageDiv.textContent = data.message || 'Registration failed';
+                                    messageDiv.style.color = 'red';
+                                }
+                            } catch (error) {
+                                messageDiv.textContent = 'Error connecting to server';
+                                messageDiv.style.color = 'red';
+                            }
+                        });
+                    </script>
+                    <p class="auth-footer">
+                        Already have an account? <a href="/login">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Virtual Lab. Made by BT & Rafli</p>
+            <p>Project for Web Application and App Development Assignment</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<html>
+<head>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Login - Virtual Lab</title>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <img src="assets/images/itblogo.jpg" alt="Logo ITB">
+                    </div>
+                    <div class="logo-text">
+                        <h1>Virtual Laboratory</h1>
+                        <p class="subtitle">Python Programming</p>
+                        <p class="sub-subtitle">Institut Teknologi Bandung</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="sticky-header-wrapper">
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="nav-active"><a href="course.html">Course</a></li>
+                    <li><a href="simulation.html">Simulation</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li class="login-button nav-active"><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-box">
+                    <h2>Login</h2>
+                    <form class="auth-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <button type="submit" class="auth-button">Login</button>
+                        <div id="message" class="auth-message"></div>
+                    </form>
+                    <script>
+                        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+                            e.preventDefault();
+                            
+                            const email = document.getElementById('email').value;
+                            const password = document.getElementById('password').value;
+                            const messageDiv = document.getElementById('message');
+                            
+                            try {
+                                const formData = new URLSearchParams();
+                                formData.append('email', email);
+                                formData.append('password', password);
+                                
+                                const response = await fetch('/api/login', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded',
+                                    },
+                                    body: formData
+                                });
+                                
+                                if (response.ok) {
+                                    messageDiv.textContent = 'Login successful! Redirecting...';
+                                    messageDiv.style.color = 'green';
+                                    setTimeout(() => {
+                                        window.location.href = '/home';
+                                    }, 2000);
+                                } else {
+                                    const error = await response.text();
+                                    messageDiv.textContent = error;
+                                    messageDiv.style.color = 'red';
+                                }
+                            } catch (error) {
+                                messageDiv.textContent = 'Error connecting to server';
+                                messageDiv.style.color = 'red';
+                            }
+                        });
+                    </script>
+                    <p class="auth-footer">
+                        Don't have an account? <a href="/register">Register here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Virtual Lab. Made by BT & Rafli</p>
+            <p>Project for Web Application and App Development Assignment</p>
+        </div>
+    </footer>
+</body>
+</html>
