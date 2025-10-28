@@ -4,7 +4,6 @@ import (
 	"crypto/rand"
 	"encoding/base64"
 	"log"
-	"net/mail"
 
 	"golang.org/x/crypto/bcrypt"
 )
@@ -25,9 +24,4 @@ func generateToken(length int) string {
 		log.Fatalf("Failed to generate token: %v", err)
 	}
 	return base64.URLEncoding.EncodeToString(bytes)
-}
-
-func isemailvalid(email string) bool {
-	_, err := mail.ParseAddress(email)
-	return err == nil
 }

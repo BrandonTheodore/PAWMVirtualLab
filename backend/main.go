@@ -18,19 +18,6 @@ func isemailvalid(email string) bool {
 	return emailRegex.MatchString(email)
 }
 
-func hashPassword(password string) (string, error) {
-	return password, nil // For now, we'll just return the plain password for testing
-}
-
-func checkPasswordHash(password, hash string) bool {
-	return password == hash // For now, we'll just do a direct comparison for testing
-}
-
-func generateToken(length int) string {
-	// For testing, return a simple token
-	return "test_token_123"
-}
-
 func enableCORS(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
